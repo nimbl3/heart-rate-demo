@@ -11,6 +11,7 @@
 		2112D30D205F70A200288FD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2112D30C205F70A200288FD9 /* AppDelegate.swift */; };
 		2112D314205F70A200288FD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2112D313205F70A200288FD9 /* Assets.xcassets */; };
 		2112D317205F70A200288FD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2112D315205F70A200288FD9 /* LaunchScreen.storyboard */; };
+		211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A04192150E7E5001EEFD1 /* ApplicationColors.swift */; };
 		21281249206B5C18003BB865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21281241206B5C18003BB865 /* ViewController.swift */; };
 		38E7E1FAAAC9964EC900C929 /* Pods_Heart_rate_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819F72A682BFA318E4051847 /* Pods_Heart_rate_demoUITests.framework */; };
 		696D16FD4C689A1239A1C022 /* Pods_Heart_rate_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C333CA290A18FC8A84443BEB /* Pods_Heart_rate_demoTests.framework */; };
@@ -44,6 +45,7 @@
 		2112D323205F70A200288FD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2112D328205F70A200288FD9 /* Heart rate demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Heart rate demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2112D32E205F70A200288FD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		211A04192150E7E5001EEFD1 /* ApplicationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationColors.swift; sourceTree = "<group>"; };
 		21281241206B5C18003BB865 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B632E4093EC4A64254B6062 /* Pods-Heart rate demo.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demo.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo.staging.xcconfig"; sourceTree = "<group>"; };
 		63CC38195AB6B8B1D24F469E /* Pods-Heart rate demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demoUITests/Pods-Heart rate demoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		2112D349205F721D00288FD9 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				211A04192150E7E5001EEFD1 /* ApplicationColors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				2112D306205F70A200288FD9 /* Frameworks */,
 				2112D307205F70A200288FD9 /* Resources */,
 				215BF30B206CAFBA00ADDB06 /* SwiftLint */,
+				73EDA142AD18D04A66A4784D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,6 +439,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		73EDA142AD18D04A66A4784D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A26E872102EF94FA9109CA0A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */,
 				21281249206B5C18003BB865 /* ViewController.swift in Sources */,
 				2112D30D205F70A200288FD9 /* AppDelegate.swift in Sources */,
 			);
