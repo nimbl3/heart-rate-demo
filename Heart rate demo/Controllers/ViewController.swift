@@ -73,7 +73,7 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         session.addInput(captureInput)
         
-        captureOutput.alwaysDiscardsLateVideoFrames = true
+        captureOutput.alwaysDiscardsLateVideoFrames = false
         captureOutput.videoSettings = [
             String(kCVPixelBufferPixelFormatTypeKey): kCVPixelFormatType_32BGRA
         ]
@@ -91,6 +91,8 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             try captureDevice.lockForConfiguration()
             try captureDevice.setTorchModeOn(level: AVCaptureDevice.maxAvailableTorchLevel)
             
+            captureDevice.exposureMode = .locked
+            
             // todo: - flash?
             captureDevice.unlockForConfiguration()
             
@@ -102,7 +104,7 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let image = image(from: sampleBuffer)?.cgImage else { return }
-        let value = self.averageValue(of: image)
+        let value = averageValue(of: image)
         print("> value:", value)
     }
     
