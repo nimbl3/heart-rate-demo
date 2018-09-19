@@ -53,7 +53,9 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         
         view.addSubview(sessionButton)
-        sessionButton.backgroundColor = .royalBlue
+        sessionButton.addTarget(self, action: #selector(start), for: .touchUpInside)
+        sessionButton.layer.cornerRadius = 8.0
+        sessionButton.backgroundColor = .blueGrey
         sessionButton.setTitle("start", for: .normal)
         sessionButton.setTitleColor(.white, for: .normal)
         sessionButton.snp.makeConstraints {
@@ -100,40 +102,80 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let image = image(from: sampleBuffer)?.cgImage else { return }
-        let color = averageColor(of: image)
+//        let color = averageColor(of: image)
+        
+        let value = self.averageValue(of: image)
+        print("> value:", value)
     }
     
     // MARK: - private helper
     
     private func image(from buffer: CMSampleBuffer) -> UIImage? {
-        guard
-            let data = AVCapturePhotoOutput
-                .jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil)
-        else { return nil }
-        return UIImage(data: data)
-    }
-    
-    private func averageColor(of image: CGImage) -> UIColor {
-        let bytesPerRow = image.bytesPerRow
-        let totalBytes = image.height * bytesPerRow
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(buffer) else { return nil }
         
-        let colorSpace = CGColorSpaceCreateDeviceGray()
-        var intensities = [UInt8](repeating: 0, count: totalBytes)
+        CVPixelBufferLockBaseAddress(imageBuffer, .readOnly)
+        let baseAddress = CVPixelBufferGetBaseAddress(imageBuffer)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+        let width = CVPixelBufferGetWidth(imageBuffer)
+        let height = CVPixelBufferGetHeight(imageBuffer)
         
-        _ = CGContext(
-            data: &intensities,
-            width: image.width,
-            height: image.height,
-            bitsPerComponent: image.bitsPerComponent,
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        var bitmapInfo = CGBitmapInfo.byteOrder32Little.rawValue
+        bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
+        
+        let context = CGContext(
+            data: baseAddress,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
             bytesPerRow: bytesPerRow,
             space: colorSpace,
-            bitmapInfo: 0
+            bitmapInfo: bitmapInfo
         )
+        let quartzImage = context?.makeImage()
+        CVPixelBufferUnlockBaseAddress(imageBuffer, .readOnly)
         
-        let sumOfIntensities = intensities.reduce(0, +)
-        let averageIntensity = sumOfIntensities / UInt8(intensities.count)
-        print("> average: \(averageIntensity)")
-        return UIColor(white: CGFloat(averageIntensity), alpha: 1.0)
+        return UIImage(cgImage: quartzImage!)
+    }
+    
+    private func averageValue(of image: CGImage) -> Float {
+        guard
+            let data = image.dataProvider?.data,
+            let pixelData = CFDataGetBytePtr(data)
+        else { print("🤬"); return 0 }
+        
+        let height = image.height
+        let width = image.width
+        let bytesPerRow = UInt(image.bytesPerRow)
+        let stride = image.bitsPerPixel / 8
+        
+        var red: UInt = 0
+        var green: UInt = 0
+        var blue: UInt = 0
+        
+        // todo: - for-in loop is required as using forEach will cause a performance
+        //         tradeoff for debug mode even though it results the same with release
+        //         configuration.
+        
+        for row in 0...height {
+            var rowPointer = pixelData
+                .advanced(by: Int(bytesPerRow))
+                .advanced(by: Int(row))
+            
+            for _ in 0...width {
+                let buffer = UnsafeBufferPointer(start: rowPointer, count: 3)
+                
+                red += UInt(buffer[2])
+                green += UInt(buffer[1])
+                blue += UInt(buffer[0])
+                
+                rowPointer = rowPointer.advanced(by: stride)
+            }
+        }
+        
+        let averageSum = Float(red + green + blue) / 3.0
+        return averageSum / Float(width) / Float(height)
     }
 
 }
