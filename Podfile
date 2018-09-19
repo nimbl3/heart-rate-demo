@@ -10,6 +10,7 @@ target 'Heart rate demo' do
   use_frameworks!
 
   pod 'SwiftLint'
+  pod 'SnapKit'
 
   target 'Heart rate demoTests' do
     inherit! :search_paths
