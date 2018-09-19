@@ -102,8 +102,6 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let image = image(from: sampleBuffer)?.cgImage else { return }
-//        let color = averageColor(of: image)
-        
         let value = self.averageValue(of: image)
         print("> value:", value)
     }
@@ -159,9 +157,7 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         //         configuration.
         
         for row in 0...height {
-            var rowPointer = pixelData
-                .advanced(by: Int(bytesPerRow))
-                .advanced(by: Int(row))
+            var rowPointer = pixelData.advanced(by: Int(bytesPerRow) * row)
             
             for _ in 0...width {
                 let buffer = UnsafeBufferPointer(start: rowPointer, count: 3)
