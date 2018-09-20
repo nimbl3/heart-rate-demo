@@ -12,6 +12,7 @@
 		2112D314205F70A200288FD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2112D313205F70A200288FD9 /* Assets.xcassets */; };
 		2112D317205F70A200288FD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2112D315205F70A200288FD9 /* LaunchScreen.storyboard */; };
 		211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A04192150E7E5001EEFD1 /* ApplicationColors.swift */; };
+		211A041C2152540D001EEFD1 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A041B2152540D001EEFD1 /* Processor.swift */; };
 		21281249206B5C18003BB865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21281241206B5C18003BB865 /* ViewController.swift */; };
 		38E7E1FAAAC9964EC900C929 /* Pods_Heart_rate_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819F72A682BFA318E4051847 /* Pods_Heart_rate_demoUITests.framework */; };
 		696D16FD4C689A1239A1C022 /* Pods_Heart_rate_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C333CA290A18FC8A84443BEB /* Pods_Heart_rate_demoTests.framework */; };
@@ -46,6 +47,7 @@
 		2112D328205F70A200288FD9 /* Heart rate demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Heart rate demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2112D32E205F70A200288FD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		211A04192150E7E5001EEFD1 /* ApplicationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationColors.swift; sourceTree = "<group>"; };
+		211A041B2152540D001EEFD1 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		21281241206B5C18003BB865 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B632E4093EC4A64254B6062 /* Pods-Heart rate demo.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demo.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo.staging.xcconfig"; sourceTree = "<group>"; };
 		63CC38195AB6B8B1D24F469E /* Pods-Heart rate demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demoUITests/Pods-Heart rate demoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				21281241206B5C18003BB865 /* ViewController.swift */,
+				211A041B2152540D001EEFD1 /* Processor.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 			files = (
 				211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */,
 				21281249206B5C18003BB865 /* ViewController.swift in Sources */,
+				211A041C2152540D001EEFD1 /* Processor.swift in Sources */,
 				2112D30D205F70A200288FD9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

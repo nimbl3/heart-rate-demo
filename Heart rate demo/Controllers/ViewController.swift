@@ -93,7 +93,20 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             captureDevice.exposureMode = .locked
             
-            // todo: - flash?
+            //todo: - frame rate?
+            
+//            var frameRate: AVFrameRateRange!
+//            if let format = captureDevice.formats.first(where: {
+//                $0.videoSupportedFrameRateRanges.contains {
+//                    frameRate = $0
+//                    return $0.maxFrameRate == 240.0
+//                }
+//            }) {
+//                captureDevice.activeFormat = format
+//                captureDevice.activeVideoMinFrameDuration = frameRate.minFrameDuration
+//                captureDevice.activeVideoMaxFrameDuration = frameRate.maxFrameDuration
+//            }
+            
             captureDevice.unlockForConfiguration()
             
             session.startRunning()
@@ -176,4 +189,10 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return averageSum / Float(width) / Float(height)
     }
 
+extension Array {
+    
+    static func += (elements: inout [Element], element: Element) {
+        elements.append(element)
+    }
+    
 }
