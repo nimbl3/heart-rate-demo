@@ -68,7 +68,6 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     private func setupSession() {
         session.sessionPreset = .cif352x288
-        
         // todo: - setup frame rate
         
         session.addInput(captureInput)
@@ -115,13 +114,33 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     // MARK: - sample buffer delegate
     
+    private let context = CIContext()
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let image = image(from: sampleBuffer)?.cgImage else { return }
+        guard
+            let image = image(from: sampleBuffer)?.cgImage
+        else { return }
+        
         let value = averageValue(of: image)
         print("> value:", value)
     }
     
     // MARK: - private helper
+    
+    private func image2(from buffer: CMSampleBuffer) -> CIImage? {
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(buffer) else { return nil }
+        let cameraImage = CIImage(cvPixelBuffer: imageBuffer)
+        let extent = cameraImage.extent
+        let inputExtent = CIVector(x: extent.origin.x,
+                                   y: extent.origin.y,
+                                   z: extent.size.width,
+                                   w: extent.size.height)
+        
+        return cameraImage.applyingFilter("CIAreaAverage", parameters: [
+            kCIInputExtentKey: inputExtent,
+            kCIInputImageKey: cameraImage
+        ])
+    }
     
     private func image(from buffer: CMSampleBuffer) -> UIImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(buffer) else { return nil }
@@ -188,6 +207,13 @@ final class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let averageSum = Float(red + green + blue) / 3.0
         return averageSum / Float(width) / Float(height)
     }
+    
+    private func averageValue(of pixelBuffer: CVPixelBuffer) -> Float {
+        
+        return 0.0
+    }
+
+}
 
 extension Array {
     

@@ -14,6 +14,12 @@
 		211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A04192150E7E5001EEFD1 /* ApplicationColors.swift */; };
 		211A041C2152540D001EEFD1 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A041B2152540D001EEFD1 /* Processor.swift */; };
 		21281249206B5C18003BB865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21281241206B5C18003BB865 /* ViewController.swift */; };
+		21F1F48E2154FB2D00F93C62 /* HeartRateKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4832154FB2A00F93C62 /* HeartRateKitController.m */; };
+		21F1F48F2154FB2D00F93C62 /* HeartRateKitAlgorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4852154FB2B00F93C62 /* HeartRateKitAlgorithm.mm */; };
+		21F1F4902154FB2D00F93C62 /* UIImage+ImageAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4862154FB2B00F93C62 /* UIImage+ImageAverageColor.m */; };
+		21F1F4912154FB2D00F93C62 /* HeartRateKitResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4872154FB2B00F93C62 /* HeartRateKitResult.m */; };
+		21F1F4922154FB2D00F93C62 /* UIView+HeartRateKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4892154FB2B00F93C62 /* UIView+HeartRateKit.m */; };
+		21F1F4932154FB2D00F93C62 /* HRKButterworth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F48B2154FB2C00F93C62 /* HRKButterworth.cpp */; };
 		38E7E1FAAAC9964EC900C929 /* Pods_Heart_rate_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819F72A682BFA318E4051847 /* Pods_Heart_rate_demoUITests.framework */; };
 		696D16FD4C689A1239A1C022 /* Pods_Heart_rate_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C333CA290A18FC8A84443BEB /* Pods_Heart_rate_demoTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +55,18 @@
 		211A04192150E7E5001EEFD1 /* ApplicationColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationColors.swift; sourceTree = "<group>"; };
 		211A041B2152540D001EEFD1 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		21281241206B5C18003BB865 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		21F1F4822154FB2900F93C62 /* Heart rate demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Heart rate demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		21F1F4832154FB2A00F93C62 /* HeartRateKitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateKitController.m; sourceTree = "<group>"; };
+		21F1F4842154FB2A00F93C62 /* UIImage+ImageAverageColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageAverageColor.h"; sourceTree = "<group>"; };
+		21F1F4852154FB2B00F93C62 /* HeartRateKitAlgorithm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HeartRateKitAlgorithm.mm; sourceTree = "<group>"; };
+		21F1F4862154FB2B00F93C62 /* UIImage+ImageAverageColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageAverageColor.m"; sourceTree = "<group>"; };
+		21F1F4872154FB2B00F93C62 /* HeartRateKitResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateKitResult.m; sourceTree = "<group>"; };
+		21F1F4882154FB2B00F93C62 /* UIView+HeartRateKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HeartRateKit.h"; sourceTree = "<group>"; };
+		21F1F4892154FB2B00F93C62 /* UIView+HeartRateKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HeartRateKit.m"; sourceTree = "<group>"; };
+		21F1F48A2154FB2B00F93C62 /* HRKButterworth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKButterworth.h; sourceTree = "<group>"; };
+		21F1F48B2154FB2C00F93C62 /* HRKButterworth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HRKButterworth.cpp; sourceTree = "<group>"; };
+		21F1F48C2154FB2C00F93C62 /* HeartRateKitResult+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HeartRateKitResult+Protected.h"; sourceTree = "<group>"; };
+		21F1F48D2154FB2C00F93C62 /* HeartRateKitAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateKitAlgorithm.h; sourceTree = "<group>"; };
 		4B632E4093EC4A64254B6062 /* Pods-Heart rate demo.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demo.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo.staging.xcconfig"; sourceTree = "<group>"; };
 		63CC38195AB6B8B1D24F469E /* Pods-Heart rate demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demoUITests/Pods-Heart rate demoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A35A4B242C5674F551C54AE /* Pods-Heart rate demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demoTests/Pods-Heart rate demoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,8 +236,28 @@
 		21281244206B5C18003BB865 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				21F1F4812154FB1A00F93C62 /* HRK */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		21F1F4812154FB1A00F93C62 /* HRK */ = {
+			isa = PBXGroup;
+			children = (
+				21F1F48D2154FB2C00F93C62 /* HeartRateKitAlgorithm.h */,
+				21F1F4852154FB2B00F93C62 /* HeartRateKitAlgorithm.mm */,
+				21F1F4832154FB2A00F93C62 /* HeartRateKitController.m */,
+				21F1F4872154FB2B00F93C62 /* HeartRateKitResult.m */,
+				21F1F48C2154FB2C00F93C62 /* HeartRateKitResult+Protected.h */,
+				21F1F48B2154FB2C00F93C62 /* HRKButterworth.cpp */,
+				21F1F48A2154FB2B00F93C62 /* HRKButterworth.h */,
+				21F1F4842154FB2A00F93C62 /* UIImage+ImageAverageColor.h */,
+				21F1F4862154FB2B00F93C62 /* UIImage+ImageAverageColor.m */,
+				21F1F4882154FB2B00F93C62 /* UIView+HeartRateKit.h */,
+				21F1F4892154FB2B00F93C62 /* UIView+HeartRateKit.m */,
+				21F1F4822154FB2900F93C62 /* Heart rate demo-Bridging-Header.h */,
+			);
+			path = HRK;
 			sourceTree = "<group>";
 		};
 		943E3AD9117600AC4E8BBC6B /* Pods */ = {
@@ -323,6 +361,7 @@
 				TargetAttributes = {
 					2112D308205F70A200288FD9 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					2112D31C205F70A200288FD9 = {
@@ -403,15 +442,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Heart rate demoTests-checkManifestLockResult.txt",
 			);
@@ -425,15 +460,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Heart rate demoUITests-checkManifestLockResult.txt",
 			);
@@ -447,15 +478,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -469,16 +496,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Heart rate demoTests/Pods-Heart rate demoTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
@@ -493,16 +516,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Heart rate demoUITests/Pods-Heart rate demoUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
@@ -517,15 +536,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Heart rate demo-checkManifestLockResult.txt",
 			);
@@ -542,9 +557,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */,
+				21F1F48F2154FB2D00F93C62 /* HeartRateKitAlgorithm.mm in Sources */,
 				21281249206B5C18003BB865 /* ViewController.swift in Sources */,
 				211A041C2152540D001EEFD1 /* Processor.swift in Sources */,
+				21F1F48E2154FB2D00F93C62 /* HeartRateKitController.m in Sources */,
 				2112D30D205F70A200288FD9 /* AppDelegate.swift in Sources */,
+				21F1F4932154FB2D00F93C62 /* HRKButterworth.cpp in Sources */,
+				21F1F4912154FB2D00F93C62 /* HeartRateKitResult.m in Sources */,
+				21F1F4922154FB2D00F93C62 /* UIView+HeartRateKit.m in Sources */,
+				21F1F4902154FB2D00F93C62 /* UIImage+ImageAverageColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +726,7 @@
 			baseConfigurationReference = AD608A6D75F045C1738CA3E8 /* Pods-Heart rate demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -716,6 +738,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nimbl3.heart-rate-demo.debug";
 				PRODUCT_NAME = "$(TARGET_NAME) debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Heart rate demo/Services/HRK/Heart rate demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -727,6 +751,7 @@
 			baseConfigurationReference = 9C6E92A15B6C067E8E2677E7 /* Pods-Heart rate demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -738,6 +763,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
+				SWIFT_OBJC_BRIDGING_HEADER = "Heart rate demo/Services/HRK/Heart rate demo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -871,6 +897,7 @@
 			baseConfigurationReference = 4B632E4093EC4A64254B6062 /* Pods-Heart rate demo.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -882,6 +909,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME) staging";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGING;
+				SWIFT_OBJC_BRIDGING_HEADER = "Heart rate demo/Services/HRK/Heart rate demo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
