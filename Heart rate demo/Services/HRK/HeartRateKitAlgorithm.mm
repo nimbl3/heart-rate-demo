@@ -281,17 +281,10 @@
     double x[dynamicwindowSize] , y[dynamicwindowSize];
     [self getLatestPoints:dynamicwindowSize andSetIntoDoubleArray:x];
     
-    
-    NSLog(@"butterworth %f : %f", *self.buttterworthValues[1], *self.buttterworthValues[0]);
-    
     [self Substract:[self mean:x withSize:dynamicwindowSize] fromArray:x withSize:dynamicwindowSize];
-    
-    //NSLog(@">>>>>>> size: %d  -  x: %f  -  y: %f", dynamicwindowSize, *x, *y);
     
     filter(2*FILTER_ORDER, self.buttterworthValues[1], self.buttterworthValues[0], dynamicwindowSize, x, y);
     double *z = y+dynamicwindowSize-2*w-1;
-    
-    //NSLog(@"size: %d  -  x: %f  -  y: %f", dynamicwindowSize, *x, *y);
     
     //
     if (!self.firstPeakPlace) {

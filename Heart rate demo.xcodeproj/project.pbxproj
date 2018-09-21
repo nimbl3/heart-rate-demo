@@ -18,6 +18,8 @@
 		21F1F4902154FB2D00F93C62 /* UIImage+ImageAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4862154FB2B00F93C62 /* UIImage+ImageAverageColor.m */; };
 		21F1F4912154FB2D00F93C62 /* HeartRateKitResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F4872154FB2B00F93C62 /* HeartRateKitResult.m */; };
 		21F1F4932154FB2D00F93C62 /* HRKButterworth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F48B2154FB2C00F93C62 /* HRKButterworth.cpp */; };
+		21F1F498215506A900F93C62 /* HeartRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F497215506A900F93C62 /* HeartRateController.swift */; };
+		21F1F49A215506B300F93C62 /* HeartRateCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1F499215506B300F93C62 /* HeartRateCaptureSession.swift */; };
 		38E7E1FAAAC9964EC900C929 /* Pods_Heart_rate_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819F72A682BFA318E4051847 /* Pods_Heart_rate_demoUITests.framework */; };
 		696D16FD4C689A1239A1C022 /* Pods_Heart_rate_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C333CA290A18FC8A84443BEB /* Pods_Heart_rate_demoTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		21F1F48D2154FB2C00F93C62 /* HeartRateKitAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateKitAlgorithm.h; sourceTree = "<group>"; };
 		21F1F4942154FCA700F93C62 /* HeartRateKitResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartRateKitResult.h; sourceTree = "<group>"; };
 		21F1F4952154FCA700F93C62 /* HeartRateKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartRateKit.h; sourceTree = "<group>"; };
+		21F1F497215506A900F93C62 /* HeartRateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateController.swift; sourceTree = "<group>"; };
+		21F1F499215506B300F93C62 /* HeartRateCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateCaptureSession.swift; sourceTree = "<group>"; };
 		4B632E4093EC4A64254B6062 /* Pods-Heart rate demo.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demo.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demo/Pods-Heart rate demo.staging.xcconfig"; sourceTree = "<group>"; };
 		63CC38195AB6B8B1D24F469E /* Pods-Heart rate demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demoUITests/Pods-Heart rate demoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A35A4B242C5674F551C54AE /* Pods-Heart rate demoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart rate demoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart rate demoTests/Pods-Heart rate demoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 			children = (
 				21281241206B5C18003BB865 /* ViewController.swift */,
 				211A041B2152540D001EEFD1 /* Processor.swift */,
+				21F1F497215506A900F93C62 /* HeartRateController.swift */,
+				21F1F499215506B300F93C62 /* HeartRateCaptureSession.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -553,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				211A041A2150E7E5001EEFD1 /* ApplicationColors.swift in Sources */,
+				21F1F498215506A900F93C62 /* HeartRateController.swift in Sources */,
 				21F1F48F2154FB2D00F93C62 /* HeartRateKitAlgorithm.mm in Sources */,
 				21281249206B5C18003BB865 /* ViewController.swift in Sources */,
 				211A041C2152540D001EEFD1 /* Processor.swift in Sources */,
@@ -560,6 +567,7 @@
 				21F1F4932154FB2D00F93C62 /* HRKButterworth.cpp in Sources */,
 				21F1F4912154FB2D00F93C62 /* HeartRateKitResult.m in Sources */,
 				21F1F4902154FB2D00F93C62 /* UIImage+ImageAverageColor.m in Sources */,
+				21F1F49A215506B300F93C62 /* HeartRateCaptureSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

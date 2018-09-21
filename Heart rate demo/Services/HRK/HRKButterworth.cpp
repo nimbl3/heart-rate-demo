@@ -197,31 +197,25 @@ double *ComputeDenCoeffs(int FilterOrder, double Lcutoff, double Ucutoff)
 
 void filter(int ord, double *a, double *b, int np, double *x, double *y)
 {
-    printf("============================\n============================\n============================\n============================\n");
     int i,j;
     y[0]=b[0] * x[0];
     for (i=1;i<ord+1;i++)
     {
         y[i]=0.0;
         for (j=0;j<i+1;j++) {
-            printf("b[%d]: %f\n", j, b[j]);
             y[i]=y[i]+b[j]*x[i-j];
         }
         for (j=0;j<i;j++) {
-            printf("a[%d]: %f\n", j+1, a[j+1]);
             y[i]=y[i]-a[j+1]*y[i-j-1];
         }
     }
-    printf("\n=====\n");
     for (i=ord+1;i<np+1;i++)
     {
         y[i]=0.0;
         for (j=0;j<ord+1;j++) {
-            printf("b[%d]: %f\n", j, b[j]);
             y[i]=y[i]+b[j]*x[i-j];
         }
         for (j=0;j<ord;j++) {
-            printf("a[%d]: %f\n", j+1, a[j+1]);
             y[i]=y[i]-a[j+1]*y[i-j-1];
         }
     }
@@ -237,9 +231,6 @@ double** butter(double FrequencyBands[2], int FilterOrder)
     double** z = (double **)calloc( 2 , sizeof(double *) );
     z[0] = NumC;
     z[1] = DenC;
-    
-    printf(">>>>>>>>> den %f %f %f %f %f\n", DenC[0], DenC[1], DenC[2], DenC[3], DenC[4]);
-    printf(">>>>>>>>> num %f %f %f %f %f\n", NumC[0], NumC[1], NumC[2], NumC[3], NumC[4]);
     
     return z;
 }
