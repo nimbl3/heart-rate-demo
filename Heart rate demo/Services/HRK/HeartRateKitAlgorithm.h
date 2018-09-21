@@ -28,6 +28,6 @@
 @property (nonatomic , readonly) BOOL shouldShowLatestResult;
 
 // the method to be called on each frame
-- (void)newFrameDetectedWithAverageColor:(UIColor *)color;
+- (void)newFrameDetectedWithValue:(CGFloat)value;
 
 @end

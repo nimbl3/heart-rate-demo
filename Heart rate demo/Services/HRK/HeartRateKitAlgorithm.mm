@@ -256,11 +256,11 @@
 #define MIN_BPM_VALUE 36
 #define MAX_BPM_VALUE 180
 
-- (void)newFrameDetectedWithAverageColor:(UIColor *)color
+- (void)newFrameDetectedWithValue:(CGFloat)value
 {
     // initial
     self.framesCounter++;
-    [self.points addObject:@([self getColorValueFrom:color])];
+    [self.points addObject:@(value)];
     [self.isPeak addObject:@(NO)];
     [self.bpmValues addObject:@(DEFAULT_BPM_VALUE)];
     [self.bpmAverageValues addObject:@(DEFAULT_BPM_VALUE)];
