@@ -30,6 +30,7 @@ final class ViewController: UIViewController, HeartRateControllerDelegate {
     
     func heartRateController(_ controller: HeartRateController, didFinishWithResult bpm: Float) {
         statusLabel.text = "FINAL RESULT: \(bpm)"
+        heartRateController.stop()
     }
     
     func heartRateController(_ controller: HeartRateController, didAbortWithError error: Error) {
@@ -47,11 +48,17 @@ final class ViewController: UIViewController, HeartRateControllerDelegate {
     // MARK: - private setup
     
     private func setupView() {
+        view.addSubview(bpmLabel)
+        bpmLabel.textAlignment = .center
+        bpmLabel.textColor = .blueGrey
+        bpmLabel.snp.makeConstraints { $0.centerX.equalToSuperview() }
+        
         view.addSubview(statusLabel)
         statusLabel.numberOfLines = 10
         statusLabel.textAlignment = .center
         statusLabel.textColor = .blueHorizon
         statusLabel.snp.makeConstraints {
+            $0.top.equalTo(bpmLabel.snp.bottom).offset(40.0)
             $0.center.equalToSuperview()
             $0.width.equalToSuperview().offset(-32.0)
         }
@@ -65,14 +72,16 @@ final class ViewController: UIViewController, HeartRateControllerDelegate {
         sessionButton.snp.makeConstraints {
             $0.top.equalTo(statusLabel.snp.bottom).offset(80.0)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(120.0)
+            $0.width.equalTo(140.0)
             $0.height.equalTo(60.0)
         }
     }
     
     // MARK: - action
     
-    private var isStarted = false
+    private var isStarted = false {
+        didSet { sessionButton.setTitle(isStarted ? "Stop" : "Start", for: .normal) }
+    }
     
     @objc private func start() {
         isStarted ? heartRateController.stop() : heartRateController.start()

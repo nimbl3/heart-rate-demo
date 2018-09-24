@@ -60,7 +60,7 @@ final class HeartRateController: HeartRateCaptureSessionDelegate {
     
     private let track = HeartRateTrack()
     
-    private let timeToDetermine: TimeInterval = 20.0
+    private let timeToDetermine: TimeInterval = 30.0
     private let timeBeforeAborting: TimeInterval = 10.0
     
     private(set) var state: State = .idle {
@@ -76,6 +76,7 @@ final class HeartRateController: HeartRateCaptureSessionDelegate {
     func start() {
         try? session.startCapturing()
         track.reset()
+        processor.reset()
         state = .idle
     }
     
@@ -91,10 +92,10 @@ final class HeartRateController: HeartRateCaptureSessionDelegate {
         
         guard processor.isCalibrated else { return }
         
-        if processor.isDetermined {
-            state = .finished(bpm: value)
+        if processor.isDetermined, abs(track.timeIntervalSinceTrackStarted) > timeToDetermine {
+            state = .finished(bpm: processor.latestBPM)
         } else {
-            state = .measuring(bpm: value)
+            state = .measuring(bpm: processor.latestBPM)
         }
     }
     
@@ -112,12 +113,15 @@ final class HeartRateController: HeartRateCaptureSessionDelegate {
         case (.idle, .calibrating):
             break // did start
         case (.calibrating, .measuring(let bpm)):
+            track.reset()
             delegateOnMainThread {
                 $0.heartRateControllerDidFinishCalibration($1)
                 $0.heartRateController($1, didMeasureBPM: bpm)
             }
         case (.measuring, .measuring(let bpm)):
             delegateOnMainThread { $0.heartRateController($1, didMeasureBPM: bpm) }
+        case (_, .finished(let bpm)):
+            delegateOnMainThread { $0.heartRateController($1, didFinishWithResult: bpm) }
         case (_, .failed(let error)):
             delegateOnMainThread { $0.heartRateController($1, didAbortWithError: error) }
         default:
