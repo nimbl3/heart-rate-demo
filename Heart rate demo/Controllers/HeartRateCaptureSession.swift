@@ -15,6 +15,9 @@ protocol HeartRateCaptureSessionDelegate: AnyObject {
     
     func heartRateCaptureSession(_ session: HeartRateCaptureSession, didOutput value: Float)
     
+    func heartRateCaptureSession(_ session: HeartRateCaptureSession,
+                                 unableToProcess error: HeartRateError)
+    
 }
 
 final class HeartRateCaptureSession: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -86,7 +89,15 @@ final class HeartRateCaptureSession: NSObject, AVCaptureVideoDataOutputSampleBuf
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let image = image(from: sampleBuffer)?.cgImage else { return }
-        delegate?.heartRateCaptureSession(self, didOutput: averageValue(of: image))
+        
+        do {
+            let value = try averageValue(of: image)
+            delegate?.heartRateCaptureSession(self, didOutput: value)
+        } catch let error as HeartRateError {
+            delegate?.heartRateCaptureSession(self, unableToProcess: error)
+        } catch {
+            // todo: - handle
+        }
     }
     
     // MARK: - private helper
@@ -120,11 +131,11 @@ final class HeartRateCaptureSession: NSObject, AVCaptureVideoDataOutputSampleBuf
         return UIImage(cgImage: quartzImage!)
     }
     
-    private func averageValue(of image: CGImage) -> Float {
+    private func averageValue(of image: CGImage) throws -> Float {
         guard
             let data = image.dataProvider?.data,
             let pixelData = CFDataGetBytePtr(data)
-            else { print("🤬"); return 0 }
+        else { print("🤬"); return 0 }
         
         let height = image.height
         let width = image.width
@@ -152,6 +163,11 @@ final class HeartRateCaptureSession: NSObject, AVCaptureVideoDataOutputSampleBuf
                 rowPointer = rowPointer.advanced(by: stride)
             }
         }
+        
+        let dimension = Float(width) * Float(height)
+        let averageRed = Float(red) / dimension
+        
+        guard averageRed > 210 else { throw HeartRateError.unableToDetectFinger }
         
         let averageSum = Float(red + green + blue) / 3.0
         return averageSum / Float(width) / Float(height)

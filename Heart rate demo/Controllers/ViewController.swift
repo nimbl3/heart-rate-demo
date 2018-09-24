@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 import AVFoundation
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, HeartRateControllerDelegate {
     
+    private let bpmLabel = UILabel()
     private let statusLabel = UILabel()
     private let sessionButton = UIButton(type: .system)
     
@@ -21,6 +22,26 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        
+        heartRateController.delegate = self
+    }
+    
+    // MARK: - heart rate controller
+    
+    func heartRateController(_ controller: HeartRateController, didFinishWithResult bpm: Float) {
+        statusLabel.text = "FINAL RESULT: \(bpm)"
+    }
+    
+    func heartRateController(_ controller: HeartRateController, didAbortWithError error: Error) {
+        statusLabel.text = error.localizedDescription
+    }
+    
+    func heartRateController(_ controller: HeartRateController, didMeasureBPM bpm: Float) {
+        bpmLabel.text = "LATEST BPM: \(bpm)"
+    }
+    
+    func heartRateControllerDidFinishCalibration(_ controller: HeartRateController) {
+        statusLabel.text = "Calibration done!"
     }
     
     // MARK: - private setup
@@ -39,13 +60,13 @@ final class ViewController: UIViewController {
         sessionButton.addTarget(self, action: #selector(start), for: .touchUpInside)
         sessionButton.layer.cornerRadius = 8.0
         sessionButton.backgroundColor = .blueGrey
-        sessionButton.setTitle("start", for: .normal)
+        sessionButton.setTitle("Start", for: .normal)
         sessionButton.setTitleColor(.white, for: .normal)
         sessionButton.snp.makeConstraints {
-            $0.top.equalTo(statusLabel.snp.bottom).offset(40.0)
+            $0.top.equalTo(statusLabel.snp.bottom).offset(80.0)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(160.0)
-            $0.height.equalTo(80.0)
+            $0.width.equalTo(120.0)
+            $0.height.equalTo(60.0)
         }
     }
     
@@ -56,6 +77,7 @@ final class ViewController: UIViewController {
     @objc private func start() {
         isStarted ? heartRateController.stop() : heartRateController.start()
         isStarted = !isStarted
+        statusLabel.text = "Calibrating..."
     }
     
     // MARK: - private helper
